@@ -1,8 +1,5 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[2]:
-
+# python script which uses locally stored username and password for authentication. 
+# The script uses the URL varaible to make an API call and returns the data.
 
 import requests
 from requests.auth import HTTPBasicAuth
@@ -29,18 +26,12 @@ passwd = get_passwd()
 #assigning the variable url to the URL of the API
 url =  "https://1.2.3.40/nitro/v1/stat/lbvserver"
 
-
+#this is where the magic happens...
 myResponse = requests.get(url,auth=HTTPBasicAuth((username), (passwd)), verify=False)
 
 jData = json.loads(myResponse.content)
 
 for key in jData:
     print (str(key) + " : " + str(jData[key]))      
-
-
-
-# In[ ]:
-
-
 
 
